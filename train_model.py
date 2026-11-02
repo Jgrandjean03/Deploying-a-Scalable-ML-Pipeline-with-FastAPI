@@ -17,7 +17,7 @@ LABEL = "salary"
 TEST_SIZE = 0.2
 SPLIT_SEED = 42
 
-# Load the cencus.csv data
+# Load the census.csv data
 project_path = os.path.dirname(os.path.abspath(__file__))
 data_path = os.path.join(project_path, "data", "census.csv")
 slice_output_path = os.path.join(project_path, "slice_output.txt")
@@ -70,7 +70,7 @@ save_model(encoder, encoder_path)
 # load the model
 model = load_model(
     model_path
-) 
+)
 
 # Use the inference function to run the model inferences on the test dataset.
 preds = inference(model, X_test)
