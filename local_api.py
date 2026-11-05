@@ -1,18 +1,10 @@
-import json
-
 import requests
 
-# TODO: send a GET using the URL http://127.0.0.1:8000
-r = None # Your code here
+BASE_URL = "http://127.0.0.1:8000"
+POST_PATH = "/data/"
+REQUEST_TIMEOUT_SECONDS = 10
 
-# TODO: print the status code
-# print()
-# TODO: print the welcome message
-# print()
-
-
-
-data = {
+SAMPLE_RECORD = {
     "age": 37,
     "workclass": "Private",
     "fnlgt": 178356,
@@ -29,10 +21,20 @@ data = {
     "native-country": "United-States",
 }
 
-# TODO: send a POST using the data above
-r = None # Your code here
+# send a GET using the base URL
+r = requests.get(BASE_URL, timeout=REQUEST_TIMEOUT_SECONDS)
 
-# TODO: print the status code
-# print()
-# TODO: print the result
-# print()
+# print the status code
+print(f"Status Code: {r.status_code}")
+# print the welcome message
+print(f"Result: {r.json()['message']}")
+
+# send a POST using the sample record
+r = requests.post(
+    BASE_URL + POST_PATH, json=SAMPLE_RECORD, timeout=REQUEST_TIMEOUT_SECONDS
+)
+
+# print the status code
+print(f"Status Code: {r.status_code}")
+# print the result
+print(f"Result: {r.json()['result']}")
